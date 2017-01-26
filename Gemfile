@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'simple_form', '~> 3.0.2'
 gem 'haml', '~> 4.0.5'
+gem 'devise', '>= 3.2.4'
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
