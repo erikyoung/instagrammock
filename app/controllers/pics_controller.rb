@@ -1,8 +1,12 @@
 class PicsController < ApplicationController
   before_action :find_pic, only: [:show, :edit, :update, :destroy, :upvote]
   before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @pics = Pic.all.order("created_at DESC")
+  end
+
+  def show
   end
 
   def new
@@ -13,14 +17,13 @@ class PicsController < ApplicationController
     @pic = current_user.pics.build(pic_params)
 
     if @pic.save
-      redirect_to @pic, notice: "Yess! It was posted!"
+      redirect_to @pic, notice: "Yesss! It was posted!"
     else
       render 'new'
     end
   end
 
   def edit
-    @pic = Pic.find(params[:id])
   end
 
   def update
@@ -29,10 +32,6 @@ class PicsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def show
-    @pic = Pic.find(params[:id])
   end
 
   def destroy
@@ -44,7 +43,7 @@ class PicsController < ApplicationController
     @pic.upvote_by current_user
     redirect_to :back
   end
-  
+
   private
 
   def pic_params
@@ -54,7 +53,5 @@ class PicsController < ApplicationController
   def find_pic
     @pic = Pic.find(params[:id])
   end
+  
 end
-
-
-
